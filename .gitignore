@@ -1,5 +1,4 @@
-# Ignore sensitive config
-src/main/resources/application.properties
+# Sensitive config
 .env
 
 # Maven

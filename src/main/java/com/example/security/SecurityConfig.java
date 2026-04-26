@@ -40,27 +40,12 @@ public class SecurityConfig {
 
             // ✅ Public endpoints
             .authorizeHttpRequests(auth -> auth
-            	    .requestMatchers(
-            	        "/",
-            	        "/favicon.ico",
-            	        "/**/*.png",
-            	        "/**/*.jpg",
-            	        "/**/*.jpeg",
-            	        "/**/*.ico",
-            	        "/**/*.css",
-            	        "/**/*.js"
-            	    ).permitAll()
-
-            	    .requestMatchers("/auth/**").permitAll()
-            	    .requestMatchers("/api/products/**").permitAll()
-
-            	    .requestMatchers(
-            	        "/v3/api-docs/**",
-            	        "/swagger-ui/**",
-            	        "/swagger-ui.html",
-            	        "/webhook/razorpay"
-            	    ).permitAll()
-
+            	    .requestMatchers("/auth/**").permitAll() // ✅ BEST
+            	    .requestMatchers("/api/products/**").permitAll()  // ✅ ADD THIS
+            	    .requestMatchers("/v3/api-docs/**",
+            	                     "/swagger-ui/**",
+            	                     "/swagger-ui.html",
+            	                     "/webhook/razorpay").permitAll()
             	    .anyRequest().authenticated()
             	);
 
